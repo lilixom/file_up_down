@@ -88,22 +88,23 @@
                 } else {
                     $form.onsubmit = detectDownloadComplete
                 }
-                var formInnerHtml = "";
+
                 //form hidden input data
                 //create submit input   
+                var item;
                 if (setting.data !== null && typeof setting.data === "object") {
                     for (var ppy in setting.data) {
                         var key = decodeURIComponent(ppy);
                         if (key) {
                             var value = decodeURIComponent(setting.data[ppy]);
-                            formInnerHtml += '<input type="hidden" name="' + key + '" value="' + value + '" />';
+                            item.push('<input type="hidden" name="', key, '" value="', value, '" />');
                         }
                     }
                 }
 
                 var token = new Date().getTime(); //use the current timestamp as the token value
-                formInnerHtml += '<input type="hidden" name="' + setting.cookieName + '" value="' + token + '">';
-                $form.innerHTML = formInnerHtml
+                item.push('<input type="hidden" name="', setting.cookieName, '" value="', token, '">');
+                $form.innerHTML = item.join("");
 
                 var $submit = document.createElement("input");
                 $submit.setAttribute("type", "submit");
