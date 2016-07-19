@@ -91,7 +91,7 @@
 
                 //form hidden input data
                 //create submit input   
-                var item;
+                var item = [];
                 if (setting.data !== null && typeof setting.data === "object") {
                     for (var ppy in setting.data) {
                         var key = decodeURIComponent(ppy);
