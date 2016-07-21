@@ -172,19 +172,19 @@
 
                 function clearElement() {
                     window.clearInterval(fileDownloadCheckTimer);
-                    delCookie($iframeDoc, setting.cookieName) //clears this cookie value
+                    delCookie($iframeDoc, setting.cookieName); //clears this cookie value
                     if ($form) {
                         if ($form.remove) {
                             $form.remove();
                         } else {
-                            $form.removeNode()
+                            $form.removeNode(true);
                         }
                     }
                     if ($iframe) {
                         if ($iframe.remove) {
                             $iframe.remove();
                         } else {
-                            $iframe.removeNode()
+                            $iframe.removeNode(true); //默认不删除子节点
                         }
                     }
                 }
