@@ -1,42 +1,50 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
+
 <head>
-<title>Download test</title>
+    <title>Download test</title>
 </head>
+
 <body>
-<script src="./fileclient.js"></script>
+    <script src="./fileclient.js"></script>
 
 
-<center>
-<a href="#" onclick="exeQuery('http://localhost:8089/download?type=download&file=test&');">Download attach</a>
+    <center>
+        <a href="#" onclick="exeQuery('http://localhost:8089/download?type=download&file=test&');">Download attach</a>
 
-<a href="#" onclick="exeQuery('http://localhost:8089/download?type=aaa&file=test&');">Download error attach</a>
+        <a href="#" onclick="exeQuery('http://localhost:8089/download?type=aaa&file=test&');">Download error attach</a>
 
-<a href="#" onclick="exeQuery('https://codeload.github.com/mugifly/jquery-simple-datetimepicker/legacy.zip/1.12.0');">Download https</a>
+        <a href="#" onclick="exeQuery('https://codeload.github.com/mugifly/jquery-simple-datetimepicker/legacy.zip/1.12.0');">Download https</a>
 
-<a href="#" onclick="exeQuery('http://localhost:9999/JsDownloader-master/examples/FileClient/test.zip');">Download static file</a>
+        <a href="#" onclick="exeQuery('http://localhost:9999/JsDownloader-master/examples/FileClient/test.zip');">Download static file</a>
 
-</center>
-<br />
-<script>
-
-	function exeQuery(url) {
-		var opt = {
-			data: {"type": "download"},
-			httpMethod: "POST",
-			failCallback: function (error) {
-				alert("fail");
-				console.log(error);
-				return;
-			},
-			completeCallback: function () {
-				alert("complete")
-
-			}
-		};
-		FileClient.download(url,opt);
-	}
-
-</script>
+    </center>
+    <br />
+    <script>
+        function exeQuery(url) {
+            var opt = {
+                data: {
+                    "type": "download"
+                },
+                httpMethod: "POST",
+                prepareCallback: function(url) {
+                    alert("start");
+                },
+                successCallback: function( 
+                    alert("success");
+                },
+                failCallback: function(error) {
+                    alert("fail");
+                    console.log(error);
+                    return;
+                },
+                completeCallback: function() {
+                    alert("complete");
+                }
+            };
+            FileClient.download(url, opt);
+        }
+    </script>
 </body>
+
 </html>
